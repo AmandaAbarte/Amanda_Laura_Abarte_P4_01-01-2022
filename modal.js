@@ -19,6 +19,8 @@ const email = document.querySelector("#email");
 const birthDate = document.querySelector("#birthdate");
 const locationSelector = document.querySelector(".checkbox-icon");
 
+const submitButton =document.querySelector(".btn-submit")
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -33,16 +35,26 @@ closeForm.addEventListener("click", () => {
   modalbg.style.display = "none";
 });
 
-//form validation 
+//form validation
 
-firstName.addEventListener("input", ($event) => {
-  if ($event.target.value.length >= 2) {
-
+firstName.addEventListener("input", () => {
+  if (firstName.value.length < 2) {   
+    submitButton.setAttribute("disabled","true")
+  } else {
+    submitButton.removeAttribute("disabled")
   }
 });
 
-firstName.addEventListener("input", ($event) => {
-  if ($event.target.value.length >= 2) {
-
+lastName.addEventListener("input", () => {
+  if (lastName.value.length < 2) {   
+    submitButton.setAttribute("disabled","true")
+  } else {
+    submitButton.removeAttribute("disabled")
   }
 });
+
+
+submitButton.addEventListener("click", () => {
+ 
+})
+
