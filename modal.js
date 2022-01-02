@@ -80,6 +80,8 @@ const tournamentsError = document.getElementById("quantity_error");
 const locationSelector = document.querySelectorAll(".checkbox-icon");
 const locationSelectorError = document.getElementById("location_error")
 
+const terms = document.getElementById("checkbox1");
+const termsError = document.getElementById("terms_error");
 
 form.addEventListener("submit", (e) => {
   let errors = [];
@@ -141,7 +143,12 @@ form.addEventListener("submit", (e) => {
   };
 
   //t&c is accepted
-
+  if(terms.checked){
+    termsError.innerHTML = "";
+  } else {
+    errors.push('t&c not accepted');
+    termsError.innerHTML = "Please agree to terms and conditions";
+  };
 
   // To submit or NOT to submit? It depends on the errors!
   if(errors.length > 0) {
