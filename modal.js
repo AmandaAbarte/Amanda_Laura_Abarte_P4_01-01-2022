@@ -73,6 +73,7 @@ const email = document.querySelector("#email");
 const emailError = document.getElementById("email_error");
 
 const birthDate = document.querySelector("#birthdate");
+const birthDateError = document.getElementById("birthdate_error");
 
 
 form.addEventListener("submit", (e) => {
@@ -109,6 +110,12 @@ form.addEventListener("submit", (e) => {
   };
 
   //Birthdate entered?
+  if(birthDate.value.length < 8){
+    errors.push('enter your birth day');
+    birthDateError.innerHTML = "Please enter your birth day";
+  } else {
+    birthDateError.innerHTML = "";
+  }
 
   //number of tournaments - a number is entered
 
