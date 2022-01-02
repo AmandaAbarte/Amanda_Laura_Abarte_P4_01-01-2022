@@ -13,7 +13,6 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeForm = document.querySelector(".close");
 
-const locationSelector = document.querySelector(".checkbox-icon");
 
 const submitButton = document.querySelector(".btn-submit");
 
@@ -78,6 +77,9 @@ const birthDateError = document.getElementById("birthdate_error");
 const tournaments = document.getElementById("quantity");
 const tournamentsError = document.getElementById("quantity_error");
 
+const locationSelector = document.querySelectorAll(".checkbox-icon");
+const locationSelectorError = document.getElementById("location_error")
+
 
 form.addEventListener("submit", (e) => {
   let errors = [];
@@ -94,7 +96,7 @@ form.addEventListener("submit", (e) => {
     firstNameError.innerHTML = "Your first name should be 2 characters or more";
   }else {
     firstNameError.innerHTML = "";
-  }
+  };
 
   //validate that last name is atleast 4 characters
   if(lastName.value.length < 4) {
@@ -102,7 +104,7 @@ form.addEventListener("submit", (e) => {
     lastNameError.innerHTML = "Your last name should be 4 characters or more";
   } else {
     firstNameError.innerHTML = "";
-  }
+  };
 
   //email address follows format of something@something.something
   if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){ 
@@ -118,7 +120,7 @@ form.addEventListener("submit", (e) => {
     birthDateError.innerHTML = "Please enter your birth day";
   } else {
     birthDateError.innerHTML = "";
-  }
+  };
 
   //number of tournaments - a number is entered
 
@@ -127,9 +129,16 @@ form.addEventListener("submit", (e) => {
     tournamentsError.innerHTML = "Please fill out this field";
   } else {
     tournamentsError.innerHTML = "";
-  }
+  };
 
   //a location is selected
+
+  if(document.querySelectorAll('input[type="radio"]:checked').length < 1){
+    errors.push('no location selected');
+    locationSelectorError.innerHTML = "Please select a location";
+  } else {
+    locationSelectorError.innerHTML = ""
+  };
 
   //t&c is accepted
 
@@ -146,6 +155,6 @@ form.addEventListener("submit", (e) => {
     console.log(errors);
     formStatus.innerHTML = "Thank you! We've received your form submission!";
 
-  }
+  };
 
 });
