@@ -70,6 +70,8 @@ const lastName = document.querySelector("#last");
 const lastNameError = document.getElementById("last_name_error");
 
 const email = document.querySelector("#email");
+const emailError = document.getElementById("email_error");
+
 const birthDate = document.querySelector("#birthdate");
 
 
@@ -99,6 +101,12 @@ form.addEventListener("submit", (e) => {
   }
 
   //email address follows format of something@something.something
+  if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){ 
+    emailError.innerHTML = "";
+  } else {
+    errors.push('please enter a valid email address');
+    emailError.innerHTML = "please enter a valid email address";
+  };
 
   //Birthdate entered?
 
