@@ -75,6 +75,9 @@ const emailError = document.getElementById("email_error");
 const birthDate = document.querySelector("#birthdate");
 const birthDateError = document.getElementById("birthdate_error");
 
+const tournaments = document.getElementById("quantity");
+const tournamentsError = document.getElementById("quantity_error");
+
 
 form.addEventListener("submit", (e) => {
   let errors = [];
@@ -118,6 +121,13 @@ form.addEventListener("submit", (e) => {
   }
 
   //number of tournaments - a number is entered
+
+  if(tournaments.value.length < 1){
+    errors.push('tournaments field left empty');
+    tournamentsError.innerHTML = "Please fill out this field";
+  } else {
+    tournamentsError.innerHTML = "";
+  }
 
   //a location is selected
 
