@@ -527,3 +527,12 @@ footer {
   }
 }
 
+
+
+/**
+ * Custom Styles
+ */
+.input-error {
+  font-size: 13px;
+  color: #ff8f8f;
+}
