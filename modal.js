@@ -15,44 +15,20 @@ const closeForm = document.querySelector(".close");
 
 const submitButton = document.querySelector(".btn-submit");
 
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-};
+}
 
-//close form 
+//close form
 
 closeForm.addEventListener("click", () => {
   modalbg.style.display = "none";
 });
 
-
-//form validation
-
-// firstName.addEventListener("input", () => {
-//   if (firstName.value.length < 2) {   
-//     submitButton.setAttribute("disabled","true");
-//   } else {
-//     submitButton.removeAttribute("disabled");
-//   }
-// });
-
-// lastName.addEventListener("input", () => {
-//   if (lastName.value.length < 2) {   
-//     submitButton.setAttribute("disabled","true");
-//   } else {
-//     submitButton.removeAttribute("disabled");
-//   }
-// });
-
-
-// submitButton.addEventListener("click", () => {
-  
-// })
 
 
 /**
@@ -89,75 +65,74 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   // Serialize the form inputs
-  
 
   // Validate the FirstName - Should be > 2 characters
   if (firstName.value.length < 2) {
-    errors.push('First name should be 2 characters or more');
+    errors.push("First name should be 2 characters or more");
     firstNameError.innerHTML = "Your first name should be 2 characters or more";
   } else {
     firstNameError.innerHTML = " ";
-  };
+  }
 
   //validate that last name is atleast 4 characters
   if (lastName.value.length < 4) {
-    errors.push('Last name should be 4 characters or more');
+    errors.push("Last name should be 4 characters or more");
     lastNameError.innerHTML = "Your last name should be 4 characters or more";
   } else {
     lastNameError.innerHTML = " ";
-  };
+  }
 
   //email address follows format of something@something.something
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) { 
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
     emailError.innerHTML = "";
   } else {
-    errors.push('please enter a valid email address');
+    errors.push("please enter a valid email address");
     emailError.innerHTML = "please enter a valid email address";
-  };
+  }
 
   //Birthdate entered?
   if (birthDate.value.length < 8) {
-    errors.push('enter your birth day');
+    errors.push("enter your birth day");
     birthDateError.innerHTML = "Please enter your birth day";
   } else {
     birthDateError.innerHTML = "";
-  };
+  }
 
   //number of tournaments - a number is entered
 
   if (tournaments.value.length < 1) {
-    errors.push('tournaments field left empty');
+    errors.push("tournaments field left empty");
     tournamentsError.innerHTML = "Please fill out this field";
   } else {
     tournamentsError.innerHTML = "";
-  };
+  }
 
   //a location is selected
 
   if (document.querySelectorAll('input[type="radio"]:checked').length < 1) {
-    errors.push('no location selected');
+    errors.push("no location selected");
     locationSelectorError.innerHTML = "Please select a location";
   } else {
     locationSelectorError.innerHTML = "";
-  };
+  }
 
   //t&c is accepted
   if (terms.checked) {
     termsError.innerHTML = "";
   } else {
-    errors.push('t&c not accepted');
+    errors.push("t&c not accepted");
     termsError.innerHTML = "Please agree to terms and conditions";
-  };
+  }
 
   // To submit or NOT to submit? It depends on the errors!
   if (errors.length > 0) {
-    console.log('Do Nothing');
+    console.log("Do Nothing");
     console.log(errors);
-    formStatus.innerHTML = 'You have some errors with your form!';
+    formStatus.innerHTML = "You have some errors with your form!";
   } else {
-    console.log('Submit the form successfully.')
+    console.log("Submit the form successfully.");
     console.log(errors);
     formStatus.innerHTML = "Thank you! We've received your form submission!";
-  };
-
+    form.reset();
+  }
 });
