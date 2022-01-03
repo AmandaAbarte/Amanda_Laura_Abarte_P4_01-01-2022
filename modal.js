@@ -135,11 +135,11 @@ form.addEventListener("submit", (e) => {
   
   // To submit or NOT to submit? It depends on the errors!
   if (errors.length > 0) {
-    console.log("Do Nothing");
+    console.log("Incomplete form - not submitted");
     console.log(errors);
     formStatus.innerHTML = "You have some errors with your form!";
   } else {
-    console.log("Submit the form successfully.");
+    console.log("Complete form - Submit the form successfully.");
     console.log(errors);
     formStatus.innerHTML = " ";
     form.reset();
@@ -148,7 +148,7 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-//sucess message after submitting
+//success message after submitting
 const successMessage = document.querySelector(".form-success");
 function success(){
  successMessage.style.display = "block";
