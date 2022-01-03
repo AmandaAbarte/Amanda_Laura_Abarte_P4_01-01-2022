@@ -11,7 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeForm = document.querySelector(".close");
+const closeFormButton = document.querySelector(".close");
 
 const submitButton = document.querySelector(".btn-submit");
 
@@ -25,8 +25,9 @@ function launchModal() {
 
 //close form
 
-closeForm.addEventListener("click", () => {
+closeFormButton.addEventListener("click", () => {
   modalbg.style.display = "none";
+  form.reset();
 });
 
 
@@ -134,5 +135,7 @@ form.addEventListener("submit", (e) => {
     console.log(errors);
     formStatus.innerHTML = "Thank you! We've received your form submission!";
     form.reset();
+    modalbg.style.display = "none";
+    alert("Thank you, form submitted");
   }
 });
