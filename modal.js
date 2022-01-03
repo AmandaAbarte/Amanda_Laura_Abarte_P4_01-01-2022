@@ -27,7 +27,16 @@ function launchModal() {
 
 closeFormButton.addEventListener("click", () => {
   modalbg.style.display = "none";
+  //resets any error messages and inputs
   form.reset();
+  formStatus.innerHTML = "";
+  firstNameError.innerHTML = " ";
+  lastNameError.innerHTML = " ";
+  emailError.innerHTML = " ";
+  birthDateError.innerHTML = " ";
+  tournamentsError.innerHTML = "";
+  locationSelectorError.innerHTML = " ";
+  termsError.innerHTML = " ";
 });
 
 
@@ -100,11 +109,11 @@ form.addEventListener("submit", (e) => {
   
   //number of tournaments - a number is entered
   
-  if (tournaments.value.length < 1) {
+  if (/^[0-9]+$/.test(tournaments.value)) {
+    tournamentsError.innerHTML = "";
+  } else {
     errors.push("tournaments field left empty");
     tournamentsError.innerHTML = "Please fill out this field";
-  } else {
-    tournamentsError.innerHTML = "";
   }
   
   //a location is selected
@@ -126,11 +135,11 @@ form.addEventListener("submit", (e) => {
   
   // To submit or NOT to submit? It depends on the errors!
   if (errors.length > 0) {
-    console.log("Do Nothing");
+    console.log("Incomplete form - not submitted");
     console.log(errors);
     formStatus.innerHTML = "You have some errors with your form!";
   } else {
-    console.log("Submit the form successfully.");
+    console.log("Complete form - Submit the form successfully.");
     console.log(errors);
     formStatus.innerHTML = " ";
     form.reset();
@@ -139,7 +148,7 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-//sucess message after submitting
+//success message after submitting
 const successMessage = document.querySelector(".form-success");
 function success(){
  successMessage.style.display = "block";

@@ -542,3 +542,8 @@ footer {
   padding: 15px 8%;
   margin: 15px auto;
 } 
+
+.form-success .content .text {
+  text-align: center;
+  font-size: 20px;
+}
