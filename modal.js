@@ -100,11 +100,11 @@ form.addEventListener("submit", (e) => {
   
   //number of tournaments - a number is entered
   
-  if (tournaments.value.length < 1) {
+  if (/^[0-9]+$/.test(tournaments.value)) {
+    tournamentsError.innerHTML = "";
+  } else {
     errors.push("tournaments field left empty");
     tournamentsError.innerHTML = "Please fill out this field";
-  } else {
-    tournamentsError.innerHTML = "";
   }
   
   //a location is selected
