@@ -11,7 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeFormButton = document.querySelector(".close");
+const closeFormButton = document.querySelector("#close1");
 
 const submitButton = document.querySelector(".btn-submit");
 
@@ -29,7 +29,6 @@ closeFormButton.addEventListener("click", () => {
   modalbg.style.display = "none";
   form.reset();
 });
-
 
 
 /**
@@ -61,12 +60,12 @@ const termsError = document.getElementById("terms_error");
 
 form.addEventListener("submit", (e) => {
   let errors = [];
-
+  
   // Prevent the page from reloading on submission
   e.preventDefault();
-
+  
   // Serialize the form inputs
-
+  
   // Validate the FirstName - Should be > 2 characters
   if (firstName.value.length < 2) {
     errors.push("First name should be 2 characters or more");
@@ -74,7 +73,7 @@ form.addEventListener("submit", (e) => {
   } else {
     firstNameError.innerHTML = " ";
   }
-
+  
   //validate that last name is atleast 4 characters
   if (lastName.value.length < 4) {
     errors.push("Last name should be 4 characters or more");
@@ -82,7 +81,7 @@ form.addEventListener("submit", (e) => {
   } else {
     lastNameError.innerHTML = " ";
   }
-
+  
   //email address follows format of something@something.something
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
     emailError.innerHTML = "";
@@ -90,7 +89,7 @@ form.addEventListener("submit", (e) => {
     errors.push("please enter a valid email address");
     emailError.innerHTML = "please enter a valid email address";
   }
-
+  
   //Birthdate entered?
   if (birthDate.value.length < 8) {
     errors.push("enter your birth day");
@@ -98,25 +97,25 @@ form.addEventListener("submit", (e) => {
   } else {
     birthDateError.innerHTML = "";
   }
-
+  
   //number of tournaments - a number is entered
-
+  
   if (tournaments.value.length < 1) {
     errors.push("tournaments field left empty");
     tournamentsError.innerHTML = "Please fill out this field";
   } else {
     tournamentsError.innerHTML = "";
   }
-
+  
   //a location is selected
-
+  
   if (document.querySelectorAll('input[type="radio"]:checked').length < 1) {
     errors.push("no location selected");
     locationSelectorError.innerHTML = "Please select a location";
   } else {
     locationSelectorError.innerHTML = "";
   }
-
+  
   //t&c is accepted
   if (terms.checked) {
     termsError.innerHTML = "";
@@ -124,7 +123,7 @@ form.addEventListener("submit", (e) => {
     errors.push("t&c not accepted");
     termsError.innerHTML = "Please agree to terms and conditions";
   }
-
+  
   // To submit or NOT to submit? It depends on the errors!
   if (errors.length > 0) {
     console.log("Do Nothing");
@@ -133,9 +132,20 @@ form.addEventListener("submit", (e) => {
   } else {
     console.log("Submit the form successfully.");
     console.log(errors);
-    formStatus.innerHTML = "Thank you! We've received your form submission!";
+    formStatus.innerHTML = " ";
     form.reset();
     modalbg.style.display = "none";
-    alert("Thank you, form submitted");
+    success();
   }
+});
+
+//sucess message after submitting
+const successMessage = document.querySelector(".form-success");
+function success(){
+ successMessage.style.display = "block";
+}
+
+const closeSuccessMessage = document.querySelector("#close2");
+closeSuccessMessage.addEventListener("click", () => {
+  successMessage.style.display = "none";
 });

@@ -536,3 +536,9 @@ footer {
   font-size: 13px;
   color: #ff8f8f;
 }
+
+.form-success .content {
+  
+  padding: 15px 8%;
+  margin: 15px auto;
+} 
