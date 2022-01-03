@@ -27,7 +27,16 @@ function launchModal() {
 
 closeFormButton.addEventListener("click", () => {
   modalbg.style.display = "none";
+  //resets any error messages and inputs
   form.reset();
+  formStatus.innerHTML = "";
+  firstNameError.innerHTML = " ";
+  lastNameError.innerHTML = " ";
+  emailError.innerHTML = " ";
+  birthDateError.innerHTML = " ";
+  tournamentsError.innerHTML = "";
+  locationSelectorError.innerHTML = " ";
+  termsError.innerHTML = " ";
 });
 
 
