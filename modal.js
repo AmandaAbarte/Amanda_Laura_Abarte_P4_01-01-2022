@@ -11,8 +11,6 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeFormButton = document.querySelector("#close1");
-
 const submitButton = document.querySelector(".btn-submit");
 
 // launch modal event
@@ -24,6 +22,7 @@ function launchModal() {
 }
 
 //close form
+const closeFormButton = document.querySelector("#close1");
 
 closeFormButton.addEventListener("click", () => {
   modalbg.style.display = "none";
@@ -108,7 +107,6 @@ form.addEventListener("submit", (e) => {
   }
   
   //number of tournaments - a number is entered
-  
   if (/^[0-9]+$/.test(tournaments.value)) {
     tournamentsError.innerHTML = "";
   } else {
@@ -117,7 +115,6 @@ form.addEventListener("submit", (e) => {
   }
   
   //a location is selected
-  
   if (document.querySelectorAll('input[type="radio"]:checked').length < 1) {
     errors.push("no location selected");
     locationSelectorError.innerHTML = "Please select a location";
@@ -152,7 +149,7 @@ form.addEventListener("submit", (e) => {
 const successMessage = document.querySelector(".form-success");
 function success(){
  successMessage.style.display = "block";
-}
+};
 
 const closeSuccessMessage = document.querySelector("#close2");
 closeSuccessMessage.addEventListener("click", () => {
