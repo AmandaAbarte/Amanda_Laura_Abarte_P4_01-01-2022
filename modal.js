@@ -18,25 +18,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.classList.add("show");
 }
-
-//close form
-const closeFormButton = document.querySelector("#close1");
-
-closeFormButton.addEventListener("click", () => {
-  modalbg.style.display = "none";
-  //resets any error messages and inputs
-  form.reset();
-  formStatus.innerHTML = "";
-  firstNameError.innerHTML = " ";
-  lastNameError.innerHTML = " ";
-  emailError.innerHTML = " ";
-  birthDateError.innerHTML = " ";
-  tournamentsError.innerHTML = "";
-  locationSelectorError.innerHTML = " ";
-  termsError.innerHTML = " ";
-});
 
 
 /**
@@ -72,7 +55,21 @@ form.addEventListener("submit", (e) => {
   // Prevent the page from reloading on submission
   e.preventDefault();
   
-  // Serialize the form inputs
+  // Validating form inputs
+
+  // Posibility to make code less repetitive
+  //validateInput(firstName, firstName.value.length < 2, firstNameError, visibleErrorMessage);
+  
+  
+  // function validateInput(target, condition, errorPushMessage, visibleErrorMessage){
+  //   if (target & condition === false) {
+  //     errors.push(errorPushMessage);
+  //     target.innerHTML = visibleErrorMessage;
+  //   } else {
+  //     target.innerHTML = "";
+  //   }
+  // }
+
   
   // Validate the FirstName - Should be > 2 characters
   if (firstName.value.length < 2) {
@@ -140,7 +137,7 @@ form.addEventListener("submit", (e) => {
     console.log(errors);
     formStatus.innerHTML = " ";
     form.reset();
-    modalbg.style.display = "none";
+    modalbg.classList.remove("show");
     success();
   }
 });
@@ -148,10 +145,25 @@ form.addEventListener("submit", (e) => {
 //success message after submitting
 const successMessage = document.querySelector(".form-success");
 function success(){
- successMessage.style.display = "block";
+ successMessage.classList.add("show");
 };
 
 const closeSuccessMessage = document.querySelector("#close2");
 closeSuccessMessage.addEventListener("click", () => {
-  successMessage.style.display = "none";
+  successMessage.classList.remove("show");
+});
+
+
+//close form
+const closeFormButton = document.querySelector("#close1");
+
+const inputs = [formStatus, firstNameError, lastNameError, birthDateError, tournamentsError, emailError, locationSelectorError, termsError];
+
+closeFormButton.addEventListener("click", () => {
+  modalbg.classList.remove("show");
+  //resets any error messages and inputs
+  form.reset();
+  inputs.forEach(input => {
+    input.innerHTML = "";
+  })
 });
